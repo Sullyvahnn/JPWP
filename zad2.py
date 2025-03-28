@@ -1,3 +1,8 @@
+"""
+uzupelnij kod przedstawiony ponizej tak aby poprawnie implementowal idee kolejki zlozonej z 2 stosow
+na dole napisz kilka testow i sprawdz czy to co napisales dziala
+"""
+
 class Stack:
     def __init__(self):
         self.stack = []
@@ -23,7 +28,9 @@ class Stack:
     def size(self):
         return len(self.stack)
 
-
+"""
+uzupelnij klase Queue aby realizowala ona strukture danych kolejki.
+"""
 class Queue:
     def __init__(self):
         self.in_stack = Stack()

@@ -25,7 +25,19 @@ class TreeVisualizer:
         G_to_load = nx.read_edgelist(self.filename)
         self.G = G_to_load
         if show:
-            self.update()
+            self.show()
+
+    def show(self):
+        plt.close(self.fig)
+        if len(self.colors) != len(self.file_to_list()):
+            self.colors = ['black' for i in range(len(self.G))]
+        fig, ax = plt.subplots()
+        if self.G.nodes():
+            pos = nx.spring_layout(self.G, seed=42)
+            nx.draw(self.G, pos, ax=ax, with_labels=True,
+                    node_size=500, node_color='skyblue',
+                    font_size=10, font_weight='bold', edge_color=self.colors)
+            plt.show()
 
     def update(self, frame=None):
         if len(self.colors) != len(self.file_to_list()):
@@ -85,8 +97,8 @@ class TreeVisualizer:
 
     def edges_to_structure(self):
         edges = self.file_to_list()
-        self.tree = build_tree(edges, self.root)
-        return build_tree(edges, self.root)
+        self.tree = build_tree(edges, f"{self.root}")
+        return self.tree
 
     def highlight_path(self, path):
         steps = path
@@ -101,4 +113,3 @@ class TreeVisualizer:
                     self.colors[edges.index(edge)] = 'r'
                 elif edge[0] == highlight_edge[1] and edge[1] == highlight_edge[0]:
                     self.colors[edges.index(edge)] = 'r'
-
