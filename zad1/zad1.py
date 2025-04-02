@@ -15,15 +15,7 @@ jesli chcecie zmienic plik to w treeVisualizer wpiszcie big_graph.txt
 mozecie uzyc tv.run_build() aby budowac wlasny graf
 """
 
-def search(node, elem, visited):
-    current_val = node.val
-    visited.append(current_val)
-    for child in node.children:
-        result = search(child, elem, list(visited))
-        if result:
-            return result
-    if elem == current_val:
-        return visited
+
 
 
 visited = search(tree, start, [])

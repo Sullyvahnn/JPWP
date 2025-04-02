@@ -1,8 +1,3 @@
-"""
-uzupelnij kod przedstawiony ponizej tak aby poprawnie implementowal idee kolejki zlozonej z 2 stosow
-na dole napisz kilka testow i sprawdz czy to co napisales dziala
-"""
-
 class Stack:
     def __init__(self):
         self.stack = []
@@ -28,9 +23,7 @@ class Stack:
     def size(self):
         return len(self.stack)
 
-"""
-uzupelnij klase Queue aby realizowala ona strukture danych kolejki.
-"""
+
 class Queue:
     def __init__(self):
         self.in_stack = Stack()
@@ -40,28 +33,18 @@ class Queue:
         self.in_stack.push(elem)
 
     def dequeue(self):
-        if self.out_stack.is_empty():  # jesli pusty przenosimy wszystko z drugiego stosu
-            if self.in_stack.is_empty():
-                raise IndexError("dequeue from empty queue")  # Kolejka jest pusta
-            while not self.in_stack.is_empty():
-                self.out_stack.push(self.in_stack.pop())
-        else:
-            return self.out_stack.pop()
+        # uzupelnij
+
+        return self.out_stack.pop()
 
     def peek(self):
-        if self.out_stack.is_empty():
-            if self.in_stack.is_empty():
-                raise IndexError("peek from empty queue")
-            while self.in_stack:
-                self.out_stack.push(self.in_stack.pop())
-        if self.out_stack:
-            return self.out_stack.peek()
+    #     uzupelnij
 
     def is_empty(self):
-        return self.out_stack.is_empty() or self.in_stack.is_empty()
+        return self.in_stack.is_empty() and self.out_stack.is_empty()
 
     def size(self):
-        return self.out_stack.size() + self.in_stack.size()
+        return self.in_stack.size() + self.out_stack.size()
 
 
 if __name__ == "__main__":
@@ -73,5 +56,5 @@ if __name__ == "__main__":
 
     print(queue.dequeue())  # 10
     print(queue.dequeue())  # 20
-    print(queue.dequeue())  # 20
-    print(queue.is_empty())  # False
+    print(queue.dequeue())  # 30
+    print(queue.is_empty())  # True
